@@ -47,13 +47,13 @@ class App {
                 String strId = cmd.substring(6);
                 int deleteNum = Integer.parseInt(strId);
 
-                WiseSaying wiseSaying;
+               boolean removed = sayingList.removeIf(e->e.getId()==deleteNum);
 
-                if(wiseSaying.getId()==deleteNum){
-                    System.out.println("%d번 명령은 존재하지 않습니다.".formatted(deleteNum));
-                }
-
-                System.out.println("%d번 명령이 삭제되었습니다.".formatted(deleteNum));
+               if(removed){
+                   System.out.println("%d번 명언이 삭제되었습니다.".formatted(deleteNum));
+               }else{
+                   System.out.println("%d번 명언은 존재하지 않습니다.".formatted(deleteNum));
+               }
 
 
             }
