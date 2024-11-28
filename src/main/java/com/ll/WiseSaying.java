@@ -35,4 +35,6 @@ public class WiseSaying {
     public void setAuthor(String author) {
         this.author = author;
     }
+
+
 }

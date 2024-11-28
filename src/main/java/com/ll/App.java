@@ -29,15 +29,18 @@ class App {
 
                 ++id;
 
-                WiseSaying wiseSayings =sayingList.add(id);
+                WiseSaying wiseSayings = new WiseSaying(id,content,author);
+
+                sayingList.add(wiseSayings);
+
 
                 System.out.println("%d번 명령이 등록되었습니다.".formatted(id));
             } else if (cmd.equals("목록")) {
                 System.out.println("번호 / 작가 / 명언");
                 System.out.println("----------------------");
 
-                for(WiseSaying wiseSaying : wiseSayings){
-                    System.out.println("%d / %s / %s".formatted());
+                for(WiseSaying wiseSaying : sayingList.reversed()){
+                    System.out.println("%d / %s / %s".formatted(wiseSaying.getId(), wiseSaying.getContent(), wiseSaying.getAuthor()));
                 }
 
             }
