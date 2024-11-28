@@ -43,6 +43,13 @@ class App {
                     System.out.println("%d / %s / %s".formatted(wiseSaying.getId(), wiseSaying.getContent(), wiseSaying.getAuthor()));
                 }
 
+            } else if(cmd.startsWith("삭제?id=")){
+                String strId = cmd.substring(6);
+                int deleteNum = Integer.parseInt(strId);
+
+                System.out.println("%d번 명령이 삭제되었습니다.".formatted(deleteNum));
+
+
             }
 
         }
