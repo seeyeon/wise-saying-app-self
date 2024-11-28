@@ -47,6 +47,12 @@ class App {
                 String strId = cmd.substring(6);
                 int deleteNum = Integer.parseInt(strId);
 
+                WiseSaying wiseSaying;
+
+                if(wiseSaying.getId()==deleteNum){
+                    System.out.println("%d번 명령은 존재하지 않습니다.".formatted(deleteNum));
+                }
+
                 System.out.println("%d번 명령이 삭제되었습니다.".formatted(deleteNum));
 
 
