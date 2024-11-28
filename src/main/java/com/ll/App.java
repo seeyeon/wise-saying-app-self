@@ -63,27 +63,33 @@ class App {
                 //modifyId와 기존 id가 일치하는 경우, 수정 진행
                 //기존 id는 sayingList에 저장되어 있는데 어떻게 꺼내지..?
 
-                WiseSaying wiseSaying = sayingList.get(modifyId-1);
+                WiseSaying foundWiseSaying = null; //찾고자 하는 객체
 
-                //System.out.println("sayingList.get(modifyId): %d %s %s".formatted(wiseSaying.getId(), wiseSaying.content, wiseSaying.getAuthor()));
-                if (wiseSaying.getId()==modifyId) {
-                    System.out.println("명언(기존) : %s".formatted(wiseSaying.getContent()));
+                for (WiseSaying wiseSaying : sayingList) {
+                    if (wiseSaying.getId() == modifyId) {
+                        foundWiseSaying = wiseSaying;
+                        break; // 찾았으면 멈추기
+                    }
+                }
+
+                if (foundWiseSaying == null) {
+                    System.out.println("%d번 명언은 존재하지 않습니다.".formatted(modifyId));
+                }else{
+
+                    System.out.println("명언(기존) : %s".formatted(foundWiseSaying.getContent()));
                     System.out.print("명언 : ");
                     String newContent = sc.nextLine();
 
-                    System.out.println("작가(기존) : %s".formatted(wiseSaying.getAuthor()));
+                    System.out.println("작가(기존) : %s".formatted(foundWiseSaying.getAuthor()));
                     System.out.print("작가 : ");
                     String newAuthor = sc.nextLine();
 
-                    wiseSaying.setContent(newContent);
-                    wiseSaying.setAuthor(newAuthor);
-                }
+                    foundWiseSaying.setContent(newContent);
+                    foundWiseSaying.setAuthor(newAuthor);
 
-                if(wiseSaying.getId()!=modifyId){
-                    //modifyId와 기존 id가 일치안하는 경우, 출력
-                    System.out.println("%d번 명언은 존재하지 않습니다.".formatted(modifyId));
+                    System.out.println("%d번 명언이 수정되었습니다.".formatted(foundWiseSaying.getId()));
+                    System.out.println("%d번 명언이 수정되었습니다.".formatted(modifyId));
                 }
-
 
 
 
