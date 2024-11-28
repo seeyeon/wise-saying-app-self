@@ -18,7 +18,6 @@ class App {
             System.out.print("명령) ");
             String cmd = sc.nextLine();
 
-
             if (cmd.equals("종료")) {
                 break;
             } else if (cmd.equals("등록")) {
@@ -29,12 +28,13 @@ class App {
 
                 ++id;
 
+                //객체 생성 및 생성자에 의해 매개변수로 객체 필드 초기화됨
                 WiseSaying wiseSayings = new WiseSaying(id, content, author);
 
                 sayingList.add(wiseSayings);
 
-
                 System.out.println("%d번 명령이 등록되었습니다.".formatted(id));
+
             } else if (cmd.equals("목록")) {
                 System.out.println("번호 / 작가 / 명언");
                 System.out.println("----------------------");
@@ -90,8 +90,6 @@ class App {
                     System.out.println("%d번 명언이 수정되었습니다.".formatted(foundWiseSaying.getId()));
                     System.out.println("%d번 명언이 수정되었습니다.".formatted(modifyId));
                 }
-
-
 
             }
 
