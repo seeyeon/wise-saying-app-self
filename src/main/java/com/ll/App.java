@@ -8,19 +8,24 @@ class App{
 
     //인스턴스 변수 선언
     Scanner sc;
-    int id;
+    int lastId;
     List<WiseSaying> wiseSayingList;
 
     //생성자를 이용한 변수 초기화
     App() {
         sc = new Scanner(System.in);
-        id=0;
+        lastId=0;
         wiseSayingList = new ArrayList<>();
     }
 
     public void run() {
 
         System.out.println("== 명언 앱 ==");
+
+        //미리 목록에 명언 넣기(샘플데이터)
+        addWiseSaying("삶이 있는 한 희망은 있다.", "키게로");
+        addWiseSaying("나의 죽음을 적들에게 알리지 말라", "이순신 장군");
+
 
        while(true){
            System.out.print("명령) ");
@@ -32,7 +37,7 @@ class App{
                actionAdd();
            } else if(cmd.equals("목록")){
                actionList();
-           }else if(cmd.startsWith("삭제?id=")){
+           }/*else if(cmd.startsWith("삭제?id=")){
                String strNum = cmd.substring(6); //"1"
                int deleteNum = Integer.parseInt(strNum); //1
 
@@ -50,7 +55,7 @@ class App{
 
                 WiseSaying found = null;
 
-                for(WiseSaying wiseSaying : wiseSayingList){
+                for( wiseSaying : wiseSayingList){
                     if(wiseSaying.getId()==modifyNum){
                         found=wiseSaying;
                         break;
@@ -73,18 +78,24 @@ class App{
 
                     System.out.println("%d번 명언이 수정되었습니다.".formatted(modifyNum));
 
-                }
+                }*/
 
 
 
            }
        }
 
+    WiseSaying addWiseSaying(String content, String author) {
+
+        int id= ++lastId; //id는 자동으로 매겨지므로 매개변수로 받아와야하는거 아님
+
+        WiseSaying wiseSaying = new WiseSaying(id, content, author);
 
 
+        wiseSayingList.add(wiseSaying);
+
+        return wiseSaying;
     }
-
-
 
     void actionAdd() {
         System.out.print("명언 :");
@@ -93,14 +104,10 @@ class App{
         System.out.print("작가 :");
         String author = sc.nextLine();
 
-        ++id;
-
-        WiseSaying wiseSaying = new WiseSaying(id, content, author);
-
-        wiseSayingList.add(wiseSaying);
+        WiseSaying wiseSaying = addWiseSaying(content, author);
 
 
-        System.out.println("%d번 명언이 등록되었습니다.".formatted(id));
+        System.out.println("%d번 명언이 등록되었습니다.".formatted(wiseSaying.getId()));
     }
 
     void actionList() {
@@ -111,4 +118,7 @@ class App{
             System.out.println("%d / %s / %s".formatted(wiseSaying.getId(), wiseSaying.getContent(), wiseSaying.getAuthor()));
         }
     }
+
 }
+
+
