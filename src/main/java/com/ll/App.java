@@ -6,11 +6,17 @@ import java.util.Scanner;
 
 class App{
 
-    //인스턴스 변수
-    Scanner sc = new Scanner(System.in);
-    int id=0;
-    List<WiseSaying> wiseSayingList = new ArrayList<>();
+    //인스턴스 변수 선언
+    Scanner sc;
+    int id;
+    List<WiseSaying> wiseSayingList;
 
+    //생성자를 이용한 변수 초기화
+    App() {
+        sc = new Scanner(System.in);
+        id=0;
+        wiseSayingList = new ArrayList<>();
+    }
 
     public void run() {
 
