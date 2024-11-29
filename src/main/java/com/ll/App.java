@@ -7,12 +7,12 @@ import java.util.Scanner;
 class App{
 
     //인스턴스 변수 선언
-    Scanner sc;
-    int lastId;
-    List<WiseSaying> wiseSayingList;
+    private Scanner sc;
+    private int lastId;
+    private List<WiseSaying> wiseSayingList;
 
     //생성자를 이용한 변수 초기화
-    App() {
+    public App() {
         sc = new Scanner(System.in);
         lastId=0;
         wiseSayingList = new ArrayList<>();
@@ -85,7 +85,7 @@ class App{
            }
        }
 
-    WiseSaying addWiseSaying(String content, String author) {
+    private WiseSaying addWiseSaying(String content, String author) {
 
         int id= ++lastId; //id는 자동으로 매겨지므로 매개변수로 받아와야하는거 아님
 
@@ -97,7 +97,7 @@ class App{
         return wiseSaying;
     }
 
-    void actionAdd() {
+    private void actionAdd() {
         System.out.print("명언 :");
         String content = sc.nextLine();
 
@@ -110,7 +110,7 @@ class App{
         System.out.println("%d번 명언이 등록되었습니다.".formatted(wiseSaying.getId()));
     }
 
-    void actionList() {
+    private void actionList() {
         System.out.println("번호 / 작가 / 명언");
         System.out.println("----------------------");
 

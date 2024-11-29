@@ -2,9 +2,9 @@ package com.ll;
 
 class WiseSaying{
 
-    int id;
-    String content;
-    String author;
+    private int id;
+    private String content;
+    private String author;
 
     WiseSaying(int id, String content, String author){
         this.id = id;
